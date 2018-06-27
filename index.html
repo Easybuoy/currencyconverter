@@ -29,23 +29,36 @@
                 <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4">
                <label for="inputCity">Amount</label>
-            <input type="text" class="form-control" id="amount" placeholder="Amount">
+            <input type="number" class="form-control" id="amount" placeholder="Amount">
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-4">
                 <label for="country" class="text-center">From Currency</label>
-                <select id="country" class="form-control-sm"> </select>
+                <select id="fromcurrency" class="form-control-sm"> </select>
 
          </div>
 
          <div class="col-lg-4 col-md-4 col-sm-4">
-                <label for="inputCity">City</label>
-             <input type="text" class="form-control" id="inputCity" placeholder="New York City">
+                <label for="country" class="text-center">To Currency</label>
+                <select id="tocurrency" class="form-control-sm"> </select>
+
          </div>
         </div>
         </div>
-            <a class="btn btn-pink" id="submit"><i class="fa fa-clone left"></i> Convert</a>
+            <a class="btn btn-primary" id="submit"><i class="fa fa-clone left"></i> Convert</a>
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-3"></div>
+                    <div class="col-lg-6 col-md-4 col-sm-6">
+                            <div class="card card-body">
+                                   <input type="text" id="currencyresult" class="text-center" disabled>
+                                </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-3"></div>
+                </div>
+            </div>
+            
         </div>
     </div>
     <!-- Content -->

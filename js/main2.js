@@ -1,11 +1,34 @@
-console.log(document);
 
-const getCountries = () => {
+
+
+let fromcurrencyvalue = '';
+let tocurrencyvalue = '';
+let amountvalue = '';
+
+
+const fromCurrency = document.getElementById('fromcurrency').addEventListener("click", (event) =>{
+    fromcurrencyvalue = event.target.value;
+});
+
+const toCurrency = document.getElementById('tocurrency').addEventListener("click", (event) =>{
+    tocurrencyvalue = event.target.value;
+});
+
+const amount = document.getElementById('amount').addEventListener("input", (event) =>{
+    amountvalue = event.target.value;  
+});
+
+
+
+
+const getCountries = (divid) => {
     let response = [];
     fetch('https://free.currencyconverterapi.com/api/v5/countries')
     .then((res) => res.json())
     .then((data) =>{
-        // console.log(data);
+        let results = data.results;
+        console.log(results)
+        populateDropdown(divid, results);
         if(data){
            return response = data;
             // console.log(response);
@@ -14,12 +37,14 @@ const getCountries = () => {
     })
     .catch((err) => console.log(err));
     return response;
-}
+};
 
-let count  = getCountries(); 
-console.log(count);
+getCountries('fromcurrency'); 
+getCountries('tocurrency'); 
 
-const convertCurrency = (amount, fromCurrency, toCurrency) => {
+
+
+const convertCurrency = (amount = 0, fromCurrency, toCurrency) => {
     if(amount && fromCurrency && toCurrency){
         let query = `${fromCurrency}_${toCurrency}`;
         fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=y`)
@@ -36,7 +61,30 @@ const convertCurrency = (amount, fromCurrency, toCurrency) => {
     }
 }
 
+
+const submit = document.getElementById('submit').addEventListener("click", (event) => {
+    event.preventDefault();
+    // console.log(fromcurrencyvalue+ 'asdads');
+    // console.log(tocurrencyvalue+ 'asdads');
+    // console.log(amountvalue+ 'asdads');
+    if(fromcurrencyvalue && tocurrencyvalue && amountvalue){
+        let convertedcurrency =  convertCurrency(amountvalue, fromcurrencyvalue,  tocurrencyvalue);
+        console.log(convertedcurrency);
+    }
+    console.log('entered');
+    // console.log(tocurrencyvalue);
+    // console.log(amountvalue);
+});
 // convertCurrency(2, 'EUR', 'NGN');
+
+const populateDropdown = (divid, results) => {
+                    var opt =  ''; for (var key in results) {
+                        //            var keyy = isoCountries[key];
+                                    var val = results[key].currencyId;
+                        
+                                    opt +=  "<option value="+val+">"+val+"</option>";
+                            }  document.getElementById(divid).innerHTML = opt
+}
 
 
 
