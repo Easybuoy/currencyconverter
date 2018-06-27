@@ -54,12 +54,12 @@ const convertCurrency = (amount = 0, fromCurrency, toCurrency) => {
         .then((res) => res.json())
         .then(data => {
             // let query2 = parseInt(query);
-          document.getElementById('currencyresult').value = '200';
          
             console.log(query);
             console.log(data);
-            let newdata = data.query;
-            console.log(newdata)
+            let newdata = data[query].val * amount;
+            document.getElementById('currencyresult').value = newdata;
+
         })
         .catch((err) => console.log(err));
 
@@ -90,6 +90,15 @@ const populateDropdown = (divid, results) => {
                                     opt +=  "<option value="+val+">"+val+"</option>";
                             }  document.getElementById(divid).innerHTML = opt
 }
+
+
+
+
+
+
+particlesJS();
+
+
 
 
 

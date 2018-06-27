@@ -1,5 +1,7 @@
 /* Your custom styles */
-
+body{
+    background: linear-gradient(89deg, rgb(33, 78, 114) 0%, rgb(183, 96, 209) 100%);
+}
 .container{
     margin-top: 10%;
     /* padding: 10px; */
@@ -64,3 +66,9 @@
     
 
 }
+
+
+
+/* #particles-js {
+    background: cornflowerblue;
+  } */
