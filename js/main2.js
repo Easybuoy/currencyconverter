@@ -21,26 +21,29 @@ const amount = document.getElementById('amount').addEventListener("input", (even
 
 
 
-const getCountries = (divid) => {
+const getCountries = (divid1, divid2) => {
     let response = [];
+    let clone = '';
+
     fetch('https://free.currencyconverterapi.com/api/v5/countries')
-    .then((res) => res.json())
+    .then((res) => {
+        clone = res.clone();
+       return res.json()
+    })
     .then((data) =>{
         let results = data.results;
-        console.log(results)
-        populateDropdown(divid, results);
-        if(data){
-           return response = data;
-            // console.log(response);
-        }
+    response2 = clone.json().then(populateDropdown(divid2, results));
+        // console.log(results)
+        populateDropdown(divid1, results);
+        
        
     })
     .catch((err) => console.log(err));
     return response;
 };
 
-getCountries('fromcurrency'); 
-getCountries('tocurrency'); 
+getCountries('fromcurrency', 'tocurrency'); 
+// getCountries('tocurrency'); 
 
 
 
@@ -51,6 +54,8 @@ const convertCurrency = (amount = 0, fromCurrency, toCurrency) => {
         .then((res) => res.json())
         .then(data => {
             // let query2 = parseInt(query);
+          document.getElementById('currencyresult').value = '200';
+         
             console.log(query);
             console.log(data);
             let newdata = data.query;
