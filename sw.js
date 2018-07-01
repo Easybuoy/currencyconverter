@@ -1,7 +1,7 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'currency-converter-cache-v1';
 var urlsToCache = [
     '/',
-    'favicon.png',
+    'favicon.ico',
     'css/bootstrap.min.css',
     'css/mdb.min.css',
     'css/style.css',
@@ -9,8 +9,9 @@ var urlsToCache = [
     'js/popper.min.js',
     'js/bootstrap.min.js',
     'js/mdb.min.js',
-    'js/axios.min.js',
-    'js/main.js'
+    'js/main.js',
+    'manifest.json',
+    'particles.json'
 ];
 
 self.addEventListener('install', function(event) {

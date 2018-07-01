@@ -72,7 +72,7 @@ body{
 }
 
 
-* {
+/* * {
     margin: 0;
     padding: 0;
   }
@@ -81,7 +81,7 @@ body{
   
   canvas {
     display: block;
-  }
+  } */
 
   /* #particles-js {
     /* width: 100%; */
