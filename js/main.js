@@ -1,4 +1,4 @@
-
+this._dbPromise = openDatabase();
 
 
 let fromcurrencyvalue = '';
@@ -32,6 +32,23 @@ const getCountries = (divid1, divid2) => {
     })
     .then((data) =>{
         let results = data.results;
+        // console.log(results)
+        // this._dbPromise.then(function(db) {
+        //     if (!db) return;
+
+        //     var tx = db.transaction('currency', 'readwrite');
+        //     var store = tx.objectStore('currency');
+        //     results.forEach(function (result) {
+        //         store.put(result);
+        //     });
+
+        //     // cleanDB(store);
+        // });
+
+
+
+
+
     response2 = clone.json().then(populateDropdown(divid2, results));
         // console.log(results)
         populateDropdown(divid1, results);
@@ -93,6 +110,30 @@ const populateDropdown = (divid, results) => {
 
 
 
+function openDatabase  (){
+    // If the browser doesn't support service worker,
+    // we don't care about having a database
+    if (!navigator.serviceWorker) {
+        return Promise.resolve();
+    }
+
+    return idb.open('currencyconverter', 1, function (upgradeDb) {
+        // switch (upgradeDb.oldVersion){
+            // case 0:
+                var store = upgradeDb.createObjectStore('currency', {
+                    keyPath: 'id'
+                });
+            // case 1:
+                // upgradeDb.createObjectStore('everything', {
+                //     keyPath: 'publishedAt'
+                // });
+            // case 2:
+                // upgradeDb.createObjectStore('countrynews', {
+                //    keyPath: 'publishedAt'
+                // });
+        // }
+    });
+}
 
 
 
