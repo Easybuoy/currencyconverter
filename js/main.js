@@ -74,7 +74,8 @@ const convertCurrency = (amount = 0, fromCurrency, toCurrency) => {
          
             console.log(query);
             console.log(data);
-            let newdata = Math.round(data[query].val * amount);
+//             let newdata = Math.round(data[query].val * amount);
+            let newdata = (data[query].val * amount).toFixed(2);
             document.getElementById('currencyresult').value = newdata;
 
         })
